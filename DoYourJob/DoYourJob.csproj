@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddChoreActivity.cs" />
+    <Compile Include="AlarmReceiver.cs" />
     <Compile Include="Chore.cs" />
     <Compile Include="ChoreAdapter.cs" />
     <Compile Include="ChoreInfoActivity.cs" />
