@@ -70,8 +70,10 @@
     <Compile Include="AddChoreActivity.cs" />
     <Compile Include="Chore.cs" />
     <Compile Include="ChoreAdapter.cs" />
+    <Compile Include="ChoreInfoActivity.cs" />
     <Compile Include="ChoreViewHolder.cs" />
     <Compile Include="DatePickerFragment.cs" />
+    <Compile Include="IOHelper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +87,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\ChoreCardView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ChoreInfo.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

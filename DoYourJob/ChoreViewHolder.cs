@@ -22,13 +22,15 @@ namespace DoYourJob
         //public TextView Description { get; private set; }
         public TextView Date { get; private set; }
 
-        public ChoreViewHolder(View itemView) : base(itemView)
+        public ChoreViewHolder(View itemView, Action<int> listener) : base(itemView)
         {
             // Locate and cache view references:
             //Image = itemView.FindViewById<ImageView>(Resource.Id.imageView);
             //Caption = itemView.FindViewById<TextView>(Resource.Id.textView);
             Name = itemView.FindViewById<TextView>(Resource.Id.choreNameView);
             Date = itemView.FindViewById<TextView>(Resource.Id.choreDateView);
+
+            itemView.Click += (sender, e) => listener(Position);
         }
     }
 }

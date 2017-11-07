@@ -15,6 +15,8 @@ namespace DoYourJob
 {
     public class ChoreAdapter : RecyclerView.Adapter
     {
+        //Include an event so our client can act when a user touches individual items
+        public event EventHandler<int> ItemClick;
         //include the data source for our Adapter
         public List<Chore> choreCollection;
         //Constructor takes a List of Chores
@@ -30,7 +32,7 @@ namespace DoYourJob
                         Inflate(Resource.Layout.ChoreCardView, parent, false);
 
             // Create a ViewHolder to hold view references inside the CardView:
-            ChoreViewHolder vh = new ChoreViewHolder(itemView);
+            ChoreViewHolder vh = new ChoreViewHolder(itemView, OnClick);
             return vh;
         }
 
@@ -51,7 +53,20 @@ namespace DoYourJob
 
         public override int ItemCount
         {
-            get { return choreCollection.Count; }
+            get {
+                if (choreCollection != null)
+                    return choreCollection.Count;
+                else
+                    return 0;
+            }
+        }
+
+        private void OnClick(int position)
+        {
+            //if (ItemClick != null)
+            //{
+            ItemClick?.Invoke(this, position);
+            //}
         }
     }
 }

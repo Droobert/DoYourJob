@@ -8,6 +8,8 @@ using Android.Support.V7.Widget;
 using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
+using Android.Content.Res;
+using System.IO;
 
 namespace DoYourJob
 {
@@ -18,17 +20,38 @@ namespace DoYourJob
         RecyclerView.LayoutManager choreLayoutManager;
         ChoreAdapter choreAdapter;
         public static List<Chore> choreCollection; //Replaced ChoreCollection type with List<Chore>
-        //Chore jsonChore;
+
+        //IOHelper ioHelper;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            
+
+            //ioHelper = new IOHelper();
+
+            string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            string filename = Path.Combine(path, "Json.txt");
             // Prepare the data source:
-            if(choreCollection == null)
-                choreCollection = new List<Chore>();
+            using (var streamReader = new StreamReader(filename))
+            {
+                string content = streamReader.ReadToEnd();
+                choreCollection = JsonConvert.DeserializeObject<List<Chore>>(content);
+                //System.Diagnostics.Debug.WriteLine(content);
+            }
+            // choreCollection = ioHelper.ReadFromJsonFile<List<Chore>>(this);            
+            if (choreCollection == null)
+                    choreCollection = new List<Chore>();
+
             //Add a new element from our AddChoreActivity
             if (Intent.HasExtra("NewChore"))
+            {
                 choreCollection.Add(JsonConvert.DeserializeObject<Chore>(Intent.GetStringExtra("NewChore")));
+
+                using (var streamWriter = new StreamWriter(filename, false))
+                {
+                    streamWriter.Write(JsonConvert.SerializeObject(choreCollection));
+                }
+                //ioHelper.WriteToJsonFile<List<Chore>>(this, choreCollection);
+            }
             
             //Chore example = new Chore("Dishes", new DateTime().ToLongDateString(), "None");
             //choreCollection.Add(example);
@@ -63,6 +86,8 @@ namespace DoYourJob
             // Get our RecyclerView layout:
             choreRecyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
 
+            //Attach the event for individual items being clicked:
+            choreAdapter.ItemClick += OnItemClick;
             // Plug the adapter into the RecyclerView:
             choreRecyclerView.SetAdapter(choreAdapter);
 
@@ -82,6 +107,16 @@ namespace DoYourJob
                 //addChoreMenu.Inflate(Resource.Menu.popup_menu);
                 //addChoreMenu.Show();
             };
+
+            void OnItemClick(object sender, int position)
+            {
+                var choreInfoIntent = new Intent(this, typeof(ChoreInfoActivity));
+                choreInfoIntent.PutExtra("index", position);
+                choreInfoIntent.PutExtra("collection", JsonConvert.SerializeObject(choreCollection));
+                //choreInfoIntent.PutExtra("imageResourceId", SharedData.CrewManifest[position].PhotoResourceId);
+
+                StartActivity(choreInfoIntent);
+            }
         }
 
         //public void addChore(Chore c) { choreCollection.Add(c); }

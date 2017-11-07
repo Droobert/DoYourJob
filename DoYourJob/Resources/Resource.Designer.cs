@@ -140,8 +140,8 @@ namespace DoYourJob
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f08000a
-			public const int AddButton = 2131230730;
+			// aapt resource value: 0x7f080010
+			public const int AddButton = 2131230736;
 			
 			// aapt resource value: 0x7f080008
 			public const int choreDateView = 2131230728;
@@ -155,6 +155,9 @@ namespace DoYourJob
 			// aapt resource value: 0x7f080000
 			public const int choreTextView = 2131230720;
 			
+			// aapt resource value: 0x7f08000b
+			public const int dateTextDisplay = 2131230731;
+			
 			// aapt resource value: 0x7f080002
 			public const int dateTextView = 2131230722;
 			
@@ -164,11 +167,26 @@ namespace DoYourJob
 			// aapt resource value: 0x7f080004
 			public const int descriptionTextView = 2131230724;
 			
+			// aapt resource value: 0x7f08000d
+			public const int detailsTextDisplay = 2131230733;
+			
+			// aapt resource value: 0x7f08000c
+			public const int detailsTextView = 2131230732;
+			
+			// aapt resource value: 0x7f08000a
+			public const int nameTextDisplay = 2131230730;
+			
 			// aapt resource value: 0x7f080009
-			public const int recyclerView = 2131230729;
+			public const int nameTextView = 2131230729;
+			
+			// aapt resource value: 0x7f08000f
+			public const int recyclerView = 2131230735;
 			
 			// aapt resource value: 0x7f080003
 			public const int selectDateButton = 2131230723;
+			
+			// aapt resource value: 0x7f08000e
+			public const int setReminderButton = 2131230734;
 			
 			// aapt resource value: 0x7f080006
 			public const int submitButton = 2131230726;
@@ -193,7 +211,10 @@ namespace DoYourJob
 			public const int ChoreCardView = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Main = 2130903042;
+			public const int ChoreInfo = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Main = 2130903043;
 			
 			static Layout()
 			{

@@ -72,6 +72,8 @@ namespace DoYourJob
             //    Toast.MakeText(this, d.date, ToastLength.Long).Show();
             //else
             //    Toast.MakeText(this, "You failed to JSON!", ToastLength.Long).Show();
+            //IOHelper ioHelper = new IOHelper();
+            //ioHelper.WriteToJsonFile<List<Chore>>(this, c);
 
             var mainActivity = new Intent(this, typeof(MainActivity));
             mainActivity.PutExtra("NewChore", JsonConvert.SerializeObject(c));
