@@ -17,6 +17,7 @@ namespace DoYourJob
     public class ChoreInfoActivity : Activity
     {
         Button setReminderButton;
+        Button deleteChoreButton;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -37,9 +38,23 @@ namespace DoYourJob
             FindViewById<TextView>(Resource.Id.detailsTextDisplay).Text = choreCollection[index].details;
 
             setReminderButton = FindViewById<Button>(Resource.Id.setReminderButton);
+            deleteChoreButton = FindViewById<Button>(Resource.Id.deleteChoreButton);
+
             setReminderButton.Click += (sender, e) =>
             {
                 Remind(DateTime.Parse(choreCollection[index].date), choreCollection[index].name, choreCollection[index].details);
+            };
+            deleteChoreButton.Click += (sender, e) =>
+            {
+                choreCollection.Remove(choreCollection[index]);
+                //FIXME: We should probably not be opening the DB connection multiple times, but for now this is what we will do
+                DBHelper dbHelper = new DBHelper();
+                dbHelper.OpenConn();
+                dbHelper.AddHouse("Dudes", JsonConvert.SerializeObject(choreCollection));
+
+                var mainActivity = new Intent(this, typeof(MainActivity));
+                mainActivity.PutExtra("updatedChoreList", JsonConvert.SerializeObject(choreCollection));
+                StartActivity(mainActivity);
             };
         }
 

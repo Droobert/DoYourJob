@@ -5,49 +5,45 @@ using Android.Support.V7.Widget;
 
 namespace DoYourJob
 {
-    public class ChoreAdapter : RecyclerView.Adapter
+    class HouseAdapter : RecyclerView.Adapter
     {
         //Include an event so our client can act when a user touches individual items
         public event EventHandler<int> ItemClick;
         //include the data source for our Adapter
-        public List<Chore> choreCollection;
+        public List<House> houseCollection;
         //Constructor takes a List of Chores
-        public ChoreAdapter(List<Chore> cCollection)
+        public HouseAdapter(List<House> hCollection)
         {
-           choreCollection = cCollection;
+            houseCollection = hCollection;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             // Inflate the CardView for the photo:
             View itemView = LayoutInflater.From(parent.Context).
-                        Inflate(Resource.Layout.ChoreCardView, parent, false);
+                        Inflate(Resource.Layout.HouseCardView, parent, false);
 
             // Create a ViewHolder to hold view references inside the CardView:
-            ChoreViewHolder vh = new ChoreViewHolder(itemView, OnClick);
+            HouseViewHolder vh = new HouseViewHolder(itemView, OnClick);
             return vh;
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            ChoreViewHolder vh = holder as ChoreViewHolder;
+            HouseViewHolder vh = holder as HouseViewHolder;
 
             // Load the Chore Name from the container:
-            vh.Name.Text = choreCollection[position].name;
+            vh.HouseName.Text = houseCollection[position].HouseName;
             // Load the Chore Date from the container:
-            vh.Date.Text = choreCollection[position].date;
-
-            // Load the photo image resource from the photo album:
-            //   vh.Image.SetImageResource(mPhotoAlbum[position].PhotoID);
-            // Load the photo caption from the photo album:
-            //  vh.Caption.Text = mPhotoAlbum[position].Caption;
+            vh.Location.Text = houseCollection[position].Location;
         }
 
         public override int ItemCount
         {
-            get {
-                if (choreCollection != null)
-                    return choreCollection.Count;
+            get
+            {
+                if (houseCollection != null)
+                    return houseCollection.Count;
                 else
                     return 0;
             }
@@ -62,15 +58,3 @@ namespace DoYourJob
         }
     }
 }
-
-
-//public class PhotoAlbumAdapter : RecyclerView.Adapter
-//{
-//    public PhotoAlbum mPhotoAlbum;
-
-//    public PhotoAlbumAdapter(PhotoAlbum photoAlbum)
-//    {
-//        mPhotoAlbum = photoAlbum;
-//    }
-//    ...
-//}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="25px"
+    android:minHeight="25px">
+  <TextView
+      android:text="House Name:"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/HouseNameTextView" />
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/HouseNameEditText" />
+  <TextView
+      android:text="Location:"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/LocationTextView" />
+  <EditText
+      android:inputType="textMultiLine"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/LocationEditText" />
+  <Button
+      android:text="Create House"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/CreateHouseButton"
+      android:clickable="true" />
+</LinearLayout>

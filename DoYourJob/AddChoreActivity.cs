@@ -60,26 +60,9 @@ namespace DoYourJob
                                 FindViewById<Button>(Resource.Id.selectDateButton).Text, 
                                 FindViewById<EditText>(Resource.Id.descriptionEditText).Text);
 
-            //if (c.date != null && c.name != null && c.details != null)
-            //    Toast.MakeText(this, c.date, ToastLength.Short).Show();
-            //else
-            //    Toast.MakeText(this, "You failed to chore!", ToastLength.Long).Show();
-
-            //string temp = JsonConvert.SerializeObject(c);
-            //Chore d = JsonConvert.DeserializeObject<Chore>(temp);
-
-            //if (d.date != null && d.name != null && d.details != null)
-            //    Toast.MakeText(this, d.date, ToastLength.Long).Show();
-            //else
-            //    Toast.MakeText(this, "You failed to JSON!", ToastLength.Long).Show();
-            //IOHelper ioHelper = new IOHelper();
-            //ioHelper.WriteToJsonFile<List<Chore>>(this, c);
-
             var mainActivity = new Intent(this, typeof(MainActivity));
             mainActivity.PutExtra("NewChore", JsonConvert.SerializeObject(c));
             StartActivity(mainActivity);
-            //MainActivity.addChore(c);
-            //MainActivity.choreCollection.Add(c);
         }
     }
 }

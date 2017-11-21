@@ -44,4 +44,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/setReminderButton" />
+    <Button
+        android:text="Chore Completed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/deleteChoreButton" />
 </LinearLayout>

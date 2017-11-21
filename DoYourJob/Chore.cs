@@ -14,7 +14,10 @@ namespace DoYourJob
         //Any details pertaining to the chore
         public string details { get; set; }
 
-        //Constructor for our Chore objects. 
+        //Defauly constructor for our Chore objects.
+        public Chore() { }
+
+        //Initialized constructor for our Chore objects. 
         public Chore(string choreName, string choreDate, string choreDetails)
         {
             name = choreName;
