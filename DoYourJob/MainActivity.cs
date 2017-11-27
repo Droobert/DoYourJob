@@ -50,14 +50,9 @@ namespace DoYourJob
             //Open dbConnection
             dbHelper.OpenConn();
             //Create the table if it does not exist
+            //dbHelper.DropHouseTable();
             dbHelper.CreateHouseTable();
-
-            //check Intent for an updated choreCollection from DeleteChoreButton in ChoreInfoActivity
-            if(Intent.HasExtra("updatedChoreList"))
-            {
-                //FIXME: The DB stuff should be done here instead of in the ChoreInfoActivity
-                choreCollection = JsonConvert.DeserializeObject<List<Chore>>(Intent.GetStringExtra("updatedChoreList"));
-            }
+            
             
             //check to see if Intent has an extra for my house
             if (Intent.HasExtra("myHouse"))
@@ -88,6 +83,16 @@ namespace DoYourJob
                         choreCollection = new List<Chore>();
                 }
 
+            //-----------UPDATE THE DB AFTER DELETING A CHORE-------
+            //check Intent for an updated choreCollection from DeleteChoreButton in ChoreInfoActivity
+            if (Intent.HasExtra("shortenedChoreList"))
+            {
+                //DONE: The DB stuff should be done here instead of in the ChoreInfoActivity
+                choreCollection = JsonConvert.DeserializeObject<List<Chore>>(Intent.GetStringExtra("shortenedChoreList"));
+                dbHelper.AddHouse(myHouse.HouseName, JsonConvert.SerializeObject(choreCollection), myHouse.Location);
+            }
+
+
             //-----------ADD NEW CHORE TO FILE-------
             ////Add a new element from our AddChoreActivity to the file
             //if (Intent.HasExtra("NewChore"))
@@ -106,7 +111,7 @@ namespace DoYourJob
             {
                 choreCollection.Add(JsonConvert.DeserializeObject<Chore>(Intent.GetStringExtra("NewChore")));
                 //Update DB by adding House to the table, replacing the previous version if it exists
-                dbHelper.AddHouse("Dudes", JsonConvert.SerializeObject(choreCollection));
+                dbHelper.AddHouse(myHouse.HouseName, JsonConvert.SerializeObject(choreCollection), myHouse.Location);
             }
 
             //-----------SET UP RECYCLERVIEW AND HELPERS------

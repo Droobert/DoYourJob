@@ -17,15 +17,10 @@ namespace DoYourJob
         RecyclerView houseRecyclerView;
         RecyclerView.LayoutManager houseLayoutManager;
         HouseAdapter houseAdapter;
-        //DONE: Add some kind of list view (another recycler view maybe?) to display the list of houses we fetched from the DB
-        //DONE: Add a way to click/select which house from the list will become myHouse (another click the items in the recycler view?) 
-        //DONE: Add button for creating a house (and then they will be added to the table)
-        //DONE: Add fields in the createHouseActivity and a confirm/submit button to go through with making the new house
-        //DONE: Add multiple houses to the table
         //FIXME: The houses are all displaying The Moon as their location in the SelectHouseActivity
         //FIXME: All of the houses are displaying the same list of chores in MainActivity. 
             //Its always the first list of chores loaded.
-        //FIXME: All of the houses are failing to load their chores from the DB in MainActivity.
+        //FIXME: All of the houses are failing to load their chores from the DB in MainActivity, only the first one is loading successfully.
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

@@ -48,12 +48,13 @@ namespace DoYourJob
             {
                 choreCollection.Remove(choreCollection[index]);
                 //FIXME: We should probably not be opening the DB connection multiple times, but for now this is what we will do
-                DBHelper dbHelper = new DBHelper();
-                dbHelper.OpenConn();
-                dbHelper.AddHouse("Dudes", JsonConvert.SerializeObject(choreCollection));
+                //DBHelper dbHelper = new DBHelper();
+                //dbHelper.OpenConn();
+                //dbHelper.AddHouse("Dudes", JsonConvert.SerializeObject(choreCollection));
+
 
                 var mainActivity = new Intent(this, typeof(MainActivity));
-                mainActivity.PutExtra("updatedChoreList", JsonConvert.SerializeObject(choreCollection));
+                mainActivity.PutExtra("shortenedChoreList", JsonConvert.SerializeObject(choreCollection));
                 StartActivity(mainActivity);
             };
         }

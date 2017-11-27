@@ -35,6 +35,7 @@ namespace DoYourJob
         public void createHouse()
         {
             House h = new House(FindViewById<EditText>(Resource.Id.HouseNameEditText).Text,
+                                null,
                                 FindViewById<EditText>(Resource.Id.LocationEditText).Text);
 
             var mainActivity = new Intent(this, typeof(MainActivity));

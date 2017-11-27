@@ -27,7 +27,8 @@ namespace DoYourJob
 
         public House() { }
 
-        public House(string houseName, string listJson, string location = "The Moon")
+        //Previously had location = "The Moon" as a default value for debugging
+        public House(string houseName, string listJson, string location)
         {
             HouseName = houseName;
             ListJson = listJson;

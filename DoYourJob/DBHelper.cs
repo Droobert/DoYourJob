@@ -35,7 +35,7 @@ namespace DoYourJob
         //FIXME: This should be a generic DropTable(Type T) function
         public void DropHouseTable()
         {
-            return;
+            dbConn.DropTable<House>();
         }
 
         //FIXME: This should be a generic CreateTable(Type T) function
@@ -45,9 +45,9 @@ namespace DoYourJob
             dbConn.CreateTable<House>();
         }
 
-        public void AddHouse(string h, string c)
+        public void AddHouse(string h, string c, string l)
         {
-            House house = new House(h, c);
+            House house = new House(h, c, l);
             //if(db does not already have the house in it...)
             dbConn.InsertOrReplace(house);
         }
